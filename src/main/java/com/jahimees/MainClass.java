@@ -14,8 +14,12 @@ public class MainClass {
 	static int m;
 	static int j=0;
 	static int r=0;
+	
 //    static char[] m;
 	public static void main(String[] args) {
+        String[] subStr;
+		String delimiter = "/";
+		
 		
                  try (BufferedReader r1 = new BufferedReader(new FileReader("D:\\Текстовые\\Учеба Олег\\JAVA PROJECTS\\MusicProject\\input.txt")))
                  {
@@ -38,9 +42,9 @@ public class MainClass {
         
         
         
-                MusicList[] music = new MusicList[20]; //массив объектов
+                MusicList[] music = new MusicList[25]; //массив объектов
         
-                for (int i=0; i<20; i++){    //Заполняет массив объектов и дает им код
+                for (int i=0; i<25; i++){    //Заполняет массив объектов и дает им код
                      music[i] = new MusicList();
                      music[i].code=i;
                 }
@@ -48,22 +52,26 @@ public class MainClass {
                 try (BufferedReader r1 = new BufferedReader(new FileReader("D:\\Текстовые\\Учеба Олег\\JAVA PROJECTS\\MusicProject\\input.txt"))) 
                 {
                  	int i=0;
-                    while ((r1.readLine())!=null){ //Построчно считывает из файла и записывает в массив
-                    	   ++i;
-        	             music[i].lines=r1.readLine();
-        	          
+                 	String text;
+                    while ((text = r1.readLine())!=null){ //Построчно считывает из файла и записывает в массив
+                    	 music[i].lines=text;
+        	             i++;
         	        } 
-                    i=0;
                 }
                  catch (IOException e1) {
       		     e1.printStackTrace();
       	         }
-           
-           
-       
+               // System.out.println(music[2].lines);
+            	subStr = new String[15];
+            	for (int i=0; i<25; i++) {
+            		music[i].setSplitter();
+            	}
+            	music[1].getSplitter();
+              
+      // System.out.println(music[3].singer);
         //Проверка
-        System.out.println("HEY");
-        music[1].WriteMusician();
+     //   System.out.println(music[0].singer);
+        
 
 }
 
