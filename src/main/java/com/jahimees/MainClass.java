@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 import com.sun.xml.internal.fastinfoset.util.StringArray;
 
@@ -14,8 +15,9 @@ public class MainClass {
 	static int m;
 	static int j=0;
 	static int r=0;
+	static int x; //Параметр
 	
-//    static char[] m;
+
 	public static void main(String[] args) {
         String[] subStr;
 		String delimiter = "/";
@@ -37,14 +39,14 @@ public class MainClass {
                  
                  
         System.out.println();
-        System.out.println("Как Вы хотите отсортировать: по цене или по популярности?");
+        System.out.println("Как Вы хотите отсортировать: по популярности (1) или по цене (2)?");
         
         
         
         
-                MusicList[] music = new MusicList[25]; //массив объектов
+                MusicList[] music = new MusicList[19]; //массив объектов
         
-                for (int i=0; i<25; i++){    //Заполняет массив объектов и дает им код
+                for (int i=0; i<19; i++){    //Заполняет массив объектов и дает им код
                      music[i] = new MusicList();
                      music[i].code=i;
                 }
@@ -61,20 +63,33 @@ public class MainClass {
                  catch (IOException e1) {
       		     e1.printStackTrace();
       	         }
-               // System.out.println(music[2].lines);
+            
             	subStr = new String[15];
-            	for (int i=0; i<25; i++) {
+            	for (int i=0; i<19; i++) {
             		music[i].setSplitter();
             	}
-            	music[1].getSplitter();
+            	
+            	music[5].getSplitter(); // Проверка
+            	
+            	//ДАЛЕЕ
+            	//пользователь вводит 1 (по цене) или 2 (по популярности)
+              Scanner in = new Scanner(System.in);
+              x=in.nextInt();
               
-      // System.out.println(music[3].singer);
-        //Проверка
-     //   System.out.println(music[0].singer);
+                    
+              for (int i=0; i<18; i++) {
+            	  music[i].sort(x, i);
+              }
+              for (int i=0; i<18; i++) {
+            	  music[MusicList.sortn[i]].getSplitter();
+              } 
+              }
+              
+   
         
 
 }
 
 	
-}
+
 
